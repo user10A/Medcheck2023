@@ -3,6 +3,7 @@ package AllPackages.DAO.DAOImpl;
 import AllPackages.DAO.DAOInterface.DaoDepartmentInterface;
 import AllPackages.DataBase1.DataBase;
 import AllPackages.Model.Department;
+import AllPackages.Model.Hospital;
 
 import java.util.List;
 import java.util.Objects;
@@ -33,5 +34,45 @@ public class DaoDepartmentImpl implements DaoDepartmentInterface {
                 return dataBase.hospitals().get(i).getDepartments().get(i);
         }
         return null;
+    }
+
+    @Override
+    public String addDepartmentToHospital(Long id, Department department) {
+        List<Hospital> hospitals = dataBase.hospitals();
+
+        for (Hospital hospital : hospitals) {
+            if (hospital.getId()==(id)) {
+                hospital.getDepartments().add(department);
+                return "Отдел успешно добавлен!";
+            }
+        }
+        return "Госпиталь с указанным ID не найден.";
+    }
+
+    @Override
+    public String updateDepartment(Long id, Department department) {
+        List<Hospital> hospitals = dataBase.hospitals();
+
+        for (Hospital hospital : hospitals) {
+            List<Department> departments = hospital.getDepartments();
+
+            for (int i = 0; i < departments.size(); i++) {
+                if (departments.get(i).getId()==(id)) {
+                    departments.set(i, department);
+                    return "Успешно обновлено!";
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteDepartmentById(Long id) {
+        List<Hospital> hospitals = dataBase.hospitals();
+
+        for (Hospital hospital : hospitals) {
+            List<Department> departments = hospital.getDepartments();
+            departments.removeIf(depart -> depart.getId()==(id));
+        }
     }
 }
