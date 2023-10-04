@@ -2,6 +2,7 @@ package AllPackages.Imp;
 
 
 import AllPackages.DAO.DAOImpl.DaoHospitalImpl;
+import AllPackages.DataBase1.DataBase;
 import AllPackages.Model.Hospital;
 import AllPackages.Model.Patient;
 import AllPackages.ServiceInterface.HospitalInterface;
@@ -11,9 +12,11 @@ import java.util.Map;
 
 public class HospitalImpl implements HospitalInterface {
     private DaoHospitalImpl daoHospital;
+    private DataBase dataBase;
 
-    public HospitalImpl(DaoHospitalImpl daoHospital) {
+    public HospitalImpl(DataBase dataBasel,DaoHospitalImpl daoHospital) {
         this.daoHospital = daoHospital;
+        this.dataBase=dataBasel;
     }
 
     @Override

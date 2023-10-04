@@ -28,4 +28,19 @@ public class DepartmentImpl implements DepartmentInterface {
     public Department findDepartmentByName(String name) {
         return daoDepartment.findDepartmentByName(name);
     }
+
+    @Override
+    public String addDepartmentToHospital(Long id, Department department) {
+        return daoDepartment.addDepartmentToHospital(id,department);
+    }
+
+    @Override
+    public String updateDepartment(Long id, Department department) {
+        return daoDepartment.updateDepartment(id,department);
+    }
+
+    @Override
+    public void deleteDepartmentById(Long id) {
+        daoDepartment.deleteDepartmentById(id);
+    }
 }

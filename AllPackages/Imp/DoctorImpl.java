@@ -6,6 +6,7 @@ import AllPackages.Model.Doctor;
 import AllPackages.Model.Hospital;
 import AllPackages.ServiceInterface.DoctorInterface;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +18,22 @@ public class DoctorImpl implements DoctorInterface {
     public DoctorImpl(DataBase dataBase, DaoDoctorImpl daoDoctor) {
         this.dataBase = dataBase;
         this.daoDoctor = daoDoctor;
+    }
+
+
+    @Override
+    public String addDoctorToHospital(Long id, Doctor doctor) {
+        return daoDoctor.addDoctorToHospital(id,doctor);
+    }
+
+    @Override
+    public String updateDoctor(Long id, Doctor doctor) {
+        return daoDoctor.updateDoctor(id,doctor);
+    }
+
+    @Override
+    public void deleteDoctorById(Long id) {
+        daoDoctor.deleteDoctorById(id);
     }
 
     @Override
@@ -42,7 +59,7 @@ public class DoctorImpl implements DoctorInterface {
     }
 
     @Override
-    public List<Doctor> getAllDoctorsByDepartmentId(Long id, List<Doctor> doctorsToAdd) {
-        return daoDoctor.getAllDoctorsByDepartmentId(id,doctorsToAdd);
+    public List<Doctor> getAllDoctorsByDepartmentId(Long id) {
+        return daoDoctor.getAllDoctorsByDepartmentId(id);
     }
 }

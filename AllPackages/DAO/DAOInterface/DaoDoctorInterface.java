@@ -12,6 +12,6 @@ public interface DaoDoctorInterface {
     void deleteDoctorById(Long id);
     List<Doctor> getAllDoctorsByHospitalId(Long id);
 
-    List<Doctor> getAllDoctorsByDepartmentId(Long id, List<Doctor> doctorsToAdd);
+    List<Doctor> getAllDoctorsByDepartmentId(Long id);
 }
 

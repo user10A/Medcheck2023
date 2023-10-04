@@ -67,8 +67,9 @@ public class DaoDoctorImpl implements DaoDoctorInterface {
     public List<Doctor> getAllDoctorsByHospitalId(Long id) {
         return dataBase.hospitals().stream().filter(hospital -> hospital.getId() == id).flatMap(hospital -> hospital.getDoctors().stream()).toList();
     }
+
     @Override
-    public List<Doctor> getAllDoctorsByDepartmentId(Long id, List<Doctor> doctorsToAdd) {
+    public List<Doctor> getAllDoctorsByDepartmentId(Long id) {
         Optional<Department> departments = dataBase.hospitals().stream().
                 flatMap(n -> n.getDepartments().stream()).findFirst();
         if (departments.isPresent()) {
@@ -77,20 +78,5 @@ public class DaoDoctorImpl implements DaoDoctorInterface {
             return null;
         }
         return null;
-    }
-
-    @Override
-    public String addDoctorToHospital(Long id, Doctor doctor) {
-        return null;
-    }
-
-    @Override
-    public String updateDoctor(Long id, Doctor doctor) {
-        return null;
-    }
-
-    @Override
-    public void deleteDoctorById(Long id) {
-
     }
 }
