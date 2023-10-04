@@ -10,5 +10,11 @@ public interface DaoDoctorInterface {
     String updateDoctor(Long id, Doctor doctor);
     void deleteDoctorById(Long id);
 
+    Doctor findDoctorById(Long id);
 
+
+    List<Doctor> getAllDoctorsByHospitalId(Long id);
+
+    List<Doctor> getAllDoctorsByDepartmentId(Long id, List<Doctor> doctorsToAdd);
 }
+
