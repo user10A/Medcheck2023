@@ -1,5 +1,6 @@
 package AllPackages.DAO.DAOInterface;
 
+import AllPackages.Model.Department;
 import AllPackages.Model.Doctor;
 
 import java.util.List;
